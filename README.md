@@ -1,6 +1,5 @@
 # EEL-FINAL-PROJECT
 
-
 This YouTube Analytics Dashboard provides comprehensive insights into platform-wide trends and metrics across the YouTube ecosystem. The data visualized here is compiled from analyzing over 5,000 YouTube channels of varying sizes, geographic locations, and content categories.
 
 Data Methodology
