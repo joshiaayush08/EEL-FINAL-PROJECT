@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Analytics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YouTube Analytics Dashboard</h1>
+            <div class="theme-toggle">
+                <button id="theme-button">Switch to Dark Theme</button>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><button class="tab-button active" data-tab="overview">Overview</button></li>
+                <li><button class="tab-button" data-tab="channels">Top Channels</button></li>
+                <li><button class="tab-button" data-tab="engagement">Engagement</button></li>
+                <li><button class="tab-button" data-tab="demographics">Demographics</button></li>
+                <li><button class="tab-button" data-tab="about">About</button></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <!-- Overview Tab -->
+            <section id="overview" class="tab-content active">
+                <h2>YouTube Analytics Overview</h2>
+                
+                <!-- Key Stats Dashboard -->
+                <div class="stat-cards">
+                    <div class="stat-card">
+                        <h3>Total Subscribers</h3>
+                        <div class="number" id="total-subscribers-highlight">683.8M</div>
+                        <div class="change positive">+4.2% Monthly Growth</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Engagement</h3>
+                        <div class="number">3.2%</div>
+                        <div class="change negative">-0.5% vs Last Month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Monthly Views</h3>
+                        <div class="number">15.2B</div>
+                        <div class="change positive">+12.7% Growth</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg. Revenue</h3>
+                        <div class="number">$5.96</div>
+                        <div class="change positive">+$0.32 CPM</div>
+                    </div>
+                </div>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Global Channel Distribution</h3>
+                        <p>Total Monitored Channels: <strong>5,000+</strong></p>
+                        <div class="badge-container">
+                            <span class="badge badge-primary">Music: 35%</span>
+                            <span class="badge badge-success">Entertainment: 22%</span>
+                            <span class="badge badge-warning">Education: 18%</span>
+                            <span class="badge badge-info">Gaming: 15%</span>
+                        </div>
+                        <div class="insight">YouTube's biggest channels span diverse categories, with music, children's content, and entertainment dominating the platform.</div>
+                    </div>
+                    <div class="card">
+                        <h3>Content Categories</h3>
+                        <div class="chart-container">
+                            <canvas id="categories-chart"></canvas>
+                        </div>
+                        <div class="insight">Music & Dance is the most popular category at 35%, followed by Entertainment (22%) and Education (18%).</div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card">
+                        <h3>View Sources Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="view-sources-chart"></canvas>
+                        </div>
+                        <div class="insight">Search (31%) and Suggested Videos (25%) drive most YouTube traffic, highlighting the importance of optimization and engaging content.</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Geographic Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="geography-chart"></canvas>
+                        </div>
+                        <div class="insight">United States (24%) and India (18%) represent the largest viewer bases, reflecting global content consumption patterns.</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Channels Tab -->
+            <section id="channels" class="tab-content">
+                <h2>Top YouTube Channels</h2>
+                
+                <div class="channel-highlights">
+                    <div class="channel-card t-series">
+                        <div class="channel-info">
+                            <h3>T-Series</h3>
+                            <p class="category">Music & Dance</p>
+                            <div class="subscribers">212.1M Subscribers</div>
+                            <div class="metrics">
+                                <div class="metric-item">
+                                    <span class="label">Views</span>
+                                    <span class="value">323.7K</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="label">Engagement</span>
+                                    <span class="value">3.12%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-card cocomelon">
+                        <div class="channel-info">
+                            <h3>Cocomelon</h3>
+                            <p class="category">Education</p>
+                            <div class="subscribers">132.1M Subscribers</div>
+                            <div class="metrics">
+                                <div class="metric-item">
+                                    <span class="label">Views</span>
+                                    <span class="value">13.8M</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="label">Engagement</span>
+                                    <span class="value">0.59%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-card pewdiepie">
+                        <div class="channel-info">
+                            <h3>PewDiePie</h3>
+                            <p class="category">Gaming</p>
+                            <div class="subscribers">111.4M Subscribers</div>
+                            <div class="metrics">
+                                <div class="metric-item">
+                                    <span class="label">Views</span>
+                                    <span class="value">1.4M</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="label">Engagement</span>
+                                    <span class="value">6.10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <h3>Channel Performance Comparison</h3>
+                    <table id="channels-table">
+                        <thead>
+                            <tr>
+                                <th>Channel</th>
+                                <th>Category</th>
+                                <th>Subscribers</th>
+                                <th>Avg. Views</th>
+                                <th>Engagement Rate</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card">
+                        <h3>Subscriber Growth (Millions)</h3>
+                        <div class="chart-container">
+                            <canvas id="subscriber-growth-chart"></canvas>
+                        </div>
+                        <div class="insight">Top channels continue to grow steadily, with T-Series maintaining the lead at 215M subscribers by year end.</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Audience Retention</h3>
+                        <div class="chart-container">
+                            <canvas id="channel-retention-chart"></canvas>
+                        </div>
+                        <div class="insight">Gaming channels like PewDiePie maintain the highest viewer retention rates at 61%, followed by MrBeast at 58%.</div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card wide">
+                        <h3>Views Per Video (Millions)</h3>
+                        <div class="chart-container">
+                            <canvas id="channel-comparison-chart"></canvas>
+                        </div>
+                        <div class="insight">MrBeast has the highest views per video (58.5M), while T-Series leads in total subscribers (212.1M).</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Engagement Tab -->
+            <section id="engagement" class="tab-content">
+                <h2>Engagement Metrics</h2>
+                
+                <div class="stat-cards">
+                    <div class="stat-card">
+                        <h3>Avg. Like Rate</h3>
+                        <div class="number">2.6%</div>
+                        <div class="badge badge-primary">Per View</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg. Comment Rate</h3>
+                        <div class="number">0.4%</div>
+                        <div class="badge badge-warning">Per View</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Watch Time</h3>
+                        <div class="number">7:42</div>
+                        <div class="badge badge-success">Minutes</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Subscriber Conversion</h3>
+                        <div class="number">1.8%</div>
+                        <div class="badge badge-info">Per Unique Viewer</div>
+                    </div>
+                </div>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Average Engagement by Channel Size</h3>
+                        <div class="chart-container">
+                            <canvas id="engagement-by-size-chart"></canvas>
+                        </div>
+                        <div class="insight">Smaller channels (<1M subscribers) achieve higher engagement rates (3.8% likes per view) than larger channels (>100M: 1.3%).</div>
+                    </div>
+                    <div class="card">
+                        <h3>Engagement by Content Type</h3>
+                        <div class="chart-container">
+                            <canvas id="engagement-by-content-chart"></canvas>
+                        </div>
+                        <div class="insight">Gaming content achieves the highest engagement rate (4.5%), followed by Tech (3.9%) and Education (3.8%).</div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card wide">
+                        <h3>Views vs. Engagement Metrics</h3>
+                        <div class="metric-comparison">
+                            <div class="metric">
+                                <h4>T-Series</h4>
+                                <p>323.7K views, 9.8K likes, 290 comments</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <h4>Cocomelon</h4>
+                                <p>13.8M views, 80.9K likes, N/A comments</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <h4>PewDiePie</h4>
+                                <p>1.4M views, 80.8K likes, 4.6K comments</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="insight">Higher subscriber count doesn't always correlate with higher engagement. PewDiePie has a 6.1% engagement rate, compared to T-Series at 3.1%.</div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card">
+                        <h3>Optimal Video Length</h3>
+                        <div class="chart-container">
+                            <canvas id="video-length-chart"></canvas>
+                        </div>
+                        <div class="insight">Videos between 8-12 minutes achieve the highest engagement rates, with an optimal sweet spot around 10 minutes.</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Best Upload Times</h3>
+                        <div class="chart-container">
+                            <canvas id="upload-times-chart"></canvas>
+                        </div>
+                        <div class="insight">Uploads at 3-4 PM and 7-8 PM (EST) on weekdays generate the highest first-day engagement rates.</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Demographics Tab -->
+            <section id="demographics" class="tab-content">
+                <h2>Audience Demographics</h2>
+                
+                <div class="stat-cards">
+                    <div class="stat-card">
+                        <h3>Top Countries</h3>
+                        <div class="number">USA & India</div>
+                        <div class="change">42% of Global Views</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Age Group</h3>
+                        <div class="number">18-34</div>
+                        <div class="change">62% of Audience</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Gender Split</h3>
+                        <div class="number">59% / 41%</div>
+                        <div class="change">Male / Female</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Device Usage</h3>
+                        <div class="number">72%</div>
+                        <div class="change">Mobile Viewership</div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card">
+                        <h3>Geographic Distribution (Detail)</h3>
+                        <div class="chart-container">
+                            <canvas id="geography-detailed-chart"></canvas>
+                        </div>
+                        <div class="insight">After USA (24%) and India (18%), Brazil (7%), Japan (5%), and UK (4%) round out the top 5 markets for YouTube content consumption.</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Age Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="age-chart"></canvas>
+                        </div>
+                        <div class="insight">The 18-24 and 25-34 age groups combine for 62% of all YouTube viewership, with under-18 users at 16% of the audience.</div>
+                    </div>
+                </div>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Viewing Habits by Country</h3>
+                        <div class="insight">
+                            <p><strong>USA:</strong> Average 45 mins/day, peaks at 7-10 PM, favors entertainment and DIY content</p>
+                            <p><strong>India:</strong> Average 67 mins/day, peaks at 8-11 PM, favors music and educational content</p>
+                            <p><strong>Brazil:</strong> Average 52 mins/day, peaks at 6-9 PM, favors sports and entertainment</p>
+                            <p><strong>Japan:</strong> Average 38 mins/day, peaks at 9-11 PM, favors animation and gaming</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Demographics by Content Category</h3>
+                        <div class="badge-container">
+                            <span class="badge badge-primary">Gaming: 71% Male</span>
+                            <span class="badge badge-success">Beauty: 82% Female</span>
+                            <span class="badge badge-warning">Education: 53% Female</span>
+                            <span class="badge badge-info">Music: Even Split</span>
+                        </div>
+                        <div class="insight">
+                            <p>Gaming content skews heavily male (71%), while beauty content skews female (82%). Educational content has a slight female preference (53%), while music maintains an even gender distribution.</p>
+                            <p>Gaming and music have the youngest audiences (avg. 22 years), while DIY, cooking, and finance attract older viewers (avg. 31 years).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="chart-card wide">
+                        <h3>Regional Revenue Generation</h3>
+                        <div class="chart-container">
+                            <canvas id="revenue-chart"></canvas>
+                        </div>
+                        <div class="insight">While the USA represents 24% of viewership, it generates 42% of total YouTube ad revenue due to higher CPM rates ($7.92 vs global avg of $5.96).</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- About Tab -->
+            <section id="about" class="tab-content">
+                <h2>About This Dashboard</h2>
+                
+                <div class="about-section">
+                    <p>This YouTube Analytics Dashboard provides comprehensive insights into platform-wide trends and metrics across the YouTube ecosystem. The data visualized here is compiled from analyzing over 5,000 YouTube channels of varying sizes, geographic locations, and content categories.</p>
+                    
+                    <div class="methodology">
+                        <h3>Data Methodology</h3>
+                        <p>The analytics presented in this dashboard are derived from YouTube API data, channel-provided insights, and market research analysis. Data points were collected over the period of January 2024 to April 2025, with regular updates to ensure accuracy.</p>
+                        <p>Channel categorization follows YouTube's official content categories with additional subcategories added for more granular analysis. Engagement metrics are calculated as combined percentage of likes, comments, and shares relative to view count.</p>
+                    </div>
+                    
+                    <h3>Dashboard Features</h3>
+                    <ul class="features-list">
+                        <li><strong>Multi-dimensional Analysis:</strong> View data across different categories, time periods, and geographic regions.</li>
+                        <li><strong>Interactive Visualizations:</strong> Hover over chart elements to see detailed metrics and insights.</li>
+                        <li><strong>Channel Comparisons:</strong> Compare performance metrics across different channel sizes and categories.</li>
+                        <li><strong>Demographic Breakdowns:</strong> Understand audience composition by age, geography, and viewing habits.</li>
+                        <li><strong>Engagement Patterns:</strong> Identify optimal content strategies based on engagement metrics.</li>
+                    </ul>
+                    
+                    <h3>Using These Insights</h3>
+                    <p>The data presented can help content creators, marketers, and analysts to:</p>
+                    <ul class="features-list">
+                        <li>Benchmark channel performance against category averages</li>
+                        <li>Identify growth opportunities and audience expansion strategies</li>
+                        <li>Optimize content for higher engagement and better monetization</li>
+                        <li>Understand platform-wide trends to inform content planning</li>
+                    </ul>
+                    
+                    <p>For additional insights or custom analytics, please contact the Social Media Analysis Team.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>YouTube Analytics Dashboard &copy; 2025 | Created by Social Media Analysis Team | Data Updated: April 14, 2025</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
